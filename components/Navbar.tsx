@@ -81,7 +81,7 @@ export function Navbar({ onStartAssessment }: { onStartAssessment?: () => void }
           ))}
         </div>
         <div className="hidden items-center gap-4 lg:flex">
-          <Link href="/app" className="text-sm font-semibold text-ivory/80 transition-colors hover:text-gold">
+          <Link href="/sign-in" className="text-sm font-semibold text-ivory/80 transition-colors hover:text-gold">
             Sign In
           </Link>
           <button onClick={onStartAssessment}
