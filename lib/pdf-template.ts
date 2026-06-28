@@ -1,6 +1,4 @@
-import crypto from "crypto";
-
-import crypto from "crypto";
+﻿import crypto from "crypto";
 
 export function stableId(...parts: (string | number | null | undefined)[]): string {
   const hash = crypto.createHash("sha256").update(parts.filter(Boolean).join("|")).digest("hex");
@@ -180,8 +178,8 @@ export function htmlTemplate(data: any) {
   .bar-eagle { background: linear-gradient(90deg,#6fa8ff,#2469d8); }
   .bar-owl { background: linear-gradient(90deg,#a084ff,#7c3aed); }
   .total-score-card { padding: 18px; text-align: center; position: relative; overflow: hidden; min-height: 142px; }
-  .total-score-card::before { content: "‹"; position: absolute; left: 46px; top: 42px; font-size: 76px; color: rgba(214,168,79,0.13); transform: rotate(-25deg); }
-  .total-score-card::after { content: "›"; position: absolute; right: 46px; top: 42px; font-size: 76px; color: rgba(214,168,79,0.13); transform: rotate(25deg); }
+  .total-score-card::before { content: "â€¹"; position: absolute; left: 46px; top: 42px; font-size: 76px; color: rgba(214,168,79,0.13); transform: rotate(-25deg); }
+  .total-score-card::after { content: "â€º"; position: absolute; right: 46px; top: 42px; font-size: 76px; color: rgba(214,168,79,0.13); transform: rotate(25deg); }
   .total-score { font-family: Georgia,"Times New Roman",serif; font-size: 58px; line-height: 1; color: #b8872e; margin-top: 20px; font-weight: 500; }
   .meaning-card { padding: 18px; margin-bottom: 16px; display: grid; grid-template-columns: 42px 1fr; gap: 14px; align-items: flex-start; }
   .meaning-text { font-size: 12px; line-height: 1.65; color: #384152; }
@@ -355,3 +353,4 @@ export function htmlTemplate(data: any) {
 
 </body></html>`;
 }
+
