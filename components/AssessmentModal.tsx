@@ -474,7 +474,27 @@ export function AssessmentModal({ onClose }: { onClose: () => void }) {
                       <Download className="h-4 w-4" />
                       Download
                     </button>
-                    <button onClick={() => window.print()} className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-white/72 hover:bg-white/10">
+                    <button onClick={async () => {
+                      if (!result || !assessmentId) return;
+                      const resp = await fetch("/api/reports/generate", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                          firstName: details.firstName,
+                          lastName: details.lastName,
+                          chronotype: result.chronotype,
+                          totalScore: result.totalScore,
+                          larkScore: result.larkScore,
+                          eagleScore: result.eagleScore,
+                          owlScore: result.owlScore,
+                          summary: result.summary,
+                          recommendations: [],
+                          orgName: details.organizationCode || "WelcomeCure",
+                          logoUrl: null,
+                        }),
+                      });
+                      if (resp.ok) { const blob = await resp.blob(); const url = URL.createObjectURL(blob); window.open(url, "_blank"); }
+                    }} className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-white/72 hover:bg-white/10">
                       <Printer className="h-4 w-4" />
                       Print
                     </button>
