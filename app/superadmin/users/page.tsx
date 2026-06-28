@@ -32,7 +32,7 @@ export default async function UsersPage({ searchParams }: { searchParams: Promis
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-3">
                     <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-gold to-sunrise text-xs text-midnight">{a.name.split(" ").pop()?.[0] || "A"}</span>
-                    <AdminDetailModal admin={a} onUpdate={() => {}} />
+                    <AdminDetailModal admin={a} />
                   </div>
                 </td>
                 <td className="px-6 py-4 text-ivory/70">{a.email}</td>

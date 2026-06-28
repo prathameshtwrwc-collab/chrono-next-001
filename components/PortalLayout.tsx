@@ -101,8 +101,19 @@ export function PortalLayout({
       <div className="lg:pl-72">
         <header className="sticky top-0 z-30 flex items-center justify-between border-b border-ivory/10 bg-midnight/70 px-6 py-4 backdrop-blur-xl">
           <button onClick={() => setOpen((v) => !v)} className="text-2xl lg:hidden">Menu</button>
-          <div className="hidden items-center gap-2 rounded-full border border-ivory/10 bg-ivory/5 px-4 py-2 text-sm text-ivory/40 md:flex">
-            <span>Search</span> insights, users, reports
+          <div className="hidden items-center gap-2 rounded-full border border-ivory/10 bg-ivory/5 px-4 py-2 text-sm text-ivory/40 min-w-0 md:flex lg:ml-6">
+            <span className="shrink-0">Search</span>
+            <input
+              type="text"
+              placeholder="insights, users, reports..."
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && (e.target as HTMLInputElement).value.trim()) {
+                  const path = window.location.pathname.startsWith("/superadmin") ? "/superadmin" : window.location.pathname.startsWith("/admin") ? "/admin" : "/member";
+                  router.push(`${path}/search?q=${encodeURIComponent((e.target as HTMLInputElement).value.trim())}`);
+                }
+              }}
+              className="min-w-0 flex-1 bg-transparent outline-none text-ivory/60 placeholder:text-ivory/30"
+            />
           </div>
           <div className="ml-auto flex items-center gap-4">
             <button className="relative text-xl text-ivory/60 hover:text-ivory" aria-label="Notifications">

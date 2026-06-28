@@ -10,16 +10,24 @@ export function DetailModal({
   data,
   columns,
   rowKey,
+  value,
+  delta,
 }: {
   title: string;
   data: Record<string, any>[];
   columns: { key: string; label: string }[];
   rowKey: string;
+  value?: string;
+  delta?: string;
 }) {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <button onClick={() => setOpen(true)} className="text-left hover:text-gold transition-colors">{title}</button>
+      <button onClick={() => setOpen(true)} className="rounded-2xl border border-ivory/10 bg-ivory/[0.04] p-6 text-left backdrop-blur transition hover:border-gold/40 hover:bg-ivory/[0.07]">
+        <p className="text-xs uppercase tracking-widest text-ivory/40">{title}</p>
+        {value && <p className="mt-3 font-serif text-4xl font-medium text-gold">{value}</p>}
+        {delta && <p className="mt-2 text-xs text-ivory/45">{delta}</p>}
+      </button>
       {open && typeof window === "object" && createPortal(
         <div className="fixed inset-0 z-[100] flex items-start justify-center bg-midnight/80 p-4 backdrop-blur-xl overflow-y-auto" onClick={() => setOpen(false)}>
           <div className="w-full max-w-4xl my-8 rounded-2xl border border-white/10 bg-indigo-deep p-6 text-ivory shadow-2xl" onClick={(e) => e.stopPropagation()}>

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import { updateAdminAction, toggleAdminStatusAction } from "@/app/actions/organizations";
 
-export function AdminDetailModal({ admin, onUpdate }: { admin: any; onUpdate: () => void }) {
+export function AdminDetailModal({ admin }: { admin: any }) {
   const [open, setOpen] = useState(false);
   const [editing, setEditing] = useState(false);
   const [fn, setFn] = useState(admin.firstName || admin.name.split(" ")[0]);
@@ -22,7 +22,7 @@ export function AdminDetailModal({ admin, onUpdate }: { admin: any; onUpdate: ()
     setBusy(true); setMessage("");
     const r = await updateAdminAction(fd);
     setMessage(r.message); setBusy(false);
-    if (r.ok) { setEditing(false); onUpdate(); }
+    if (r.ok) { setEditing(false); window.location.reload(); }
   };
 
   const toggle = async () => {
@@ -32,7 +32,7 @@ export function AdminDetailModal({ admin, onUpdate }: { admin: any; onUpdate: ()
     setBusy(true);
     const r = await toggleAdminStatusAction(fd);
     setMessage(r.message); setBusy(false);
-    if (r.ok) onUpdate();
+    if (r.ok) window.location.reload();
   };
 
   return (

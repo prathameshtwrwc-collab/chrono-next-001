@@ -24,25 +24,20 @@ export default async function OrgDetailPage({ params }: { params: Promise<{ code
         sub={`Code: ${org.unique_code} · Created ${new Date(org.created_at).toLocaleDateString()}`}
       />
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mt-6">
-        <DetailModal title="Members" data={members} rowKey="id" columns={[
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-6">
+        <DetailModal title="Members" value={String(stats.totalMembers)} delta="Total registered" data={members} rowKey="id" columns={[
           { key: "name", label: "Name" },
           { key: "email", label: "Email" },
           { key: "gender", label: "Gender" },
           { key: "age", label: "Age" },
           { key: "chronotype", label: "Chronotype" },
         ]} />
-        <DetailModal title="Admins" data={admins} rowKey="id" columns={[
+        <DetailModal title="Admins" value={String(stats.totalAdmins)} delta="Organization admins" data={admins} rowKey="id" columns={[
           { key: "name", label: "Name" },
           { key: "email", label: "Email" },
           { key: "role", label: "Role" },
           { key: "status", label: "Status" },
         ]} />
-      </div>
-
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-6">
-        <Stat label="Members" value={String(stats.totalMembers)} delta="Total registered" />
-        <Stat label="Admins" value={String(stats.totalAdmins)} delta="Organization admins" color="text-champagne" />
         <Stat label="Assessed" value={String(stats.larks + stats.eagles + stats.owls)} delta="With chronotype result" color="text-elegant" />
         <Stat label="Unassessed" value={String(stats.unassessed)} delta="Assessment pending" color="text-sunrise" />
       </div>
