@@ -47,7 +47,7 @@ export function ChronotypeDiscovery() {
         <div className="mb-12 text-center">
           <Reveal><Eyebrow className="justify-center">Chronotype Discovery</Eyebrow></Reveal>
           <Reveal delay={0.1}>
-            <h2 className="mx-auto max-w-4xl font-serif text-[clamp(2.5rem,5.5vw,5.5rem)] font-medium leading-[1]">
+            <h2 className="mx-auto max-w-4xl font-serif text-[clamp(2.5rem,5.5vw,5.5rem)] font-medium leading-[1.08]">
               Not every body clock{" "}
               <span className="italic" style={{ color: t.sub }}>runs the same.</span>
             </h2>
@@ -148,7 +148,7 @@ export function WhyChronotypesMatter() {
           <div className="lg:col-span-5">
             <Reveal><Eyebrow dark>Why Chronotypes Matter</Eyebrow></Reveal>
             <Reveal delay={0.1}>
-              <h2 className="font-serif text-[clamp(2.3rem,5vw,4.5rem)] font-medium leading-[1]">
+              <h2 className="font-serif text-[clamp(2.3rem,5vw,4.5rem)] font-medium leading-[1.08]">
                 Your energy has a <span className="italic text-royal">pattern.</span>
               </h2>
             </Reveal>
@@ -255,7 +255,7 @@ export function FeaturedInsight() {
           <motion.div style={{ y: textY }} className="flex flex-col justify-center lg:col-span-5">
             <Reveal><Eyebrow dark>Featured Insight</Eyebrow></Reveal>
             <Reveal delay={0.1}>
-              <h2 className="font-serif text-[clamp(2.3rem,4.5vw,4rem)] font-medium leading-[1]">
+              <h2 className="font-serif text-[clamp(2.3rem,4.5vw,4rem)] font-medium leading-[1.08]">
                 The architecture of a <span className="italic text-royal">perfect night.</span>
               </h2>
             </Reveal>
@@ -314,7 +314,7 @@ export function EducationalVisual() {
         <div className="mb-16 text-center">
           <Reveal><Eyebrow className="justify-center">Educational Visual</Eyebrow></Reveal>
           <Reveal delay={0.1}>
-            <h2 className="mx-auto max-w-3xl font-serif text-[clamp(2.4rem,5vw,5rem)] font-medium leading-[1]">
+            <h2 className="mx-auto max-w-3xl font-serif text-[clamp(2.4rem,5vw,5rem)] font-medium leading-[1.08]">
               Science made <span className="gold-text italic">visually clear.</span>
             </h2>
           </Reveal>

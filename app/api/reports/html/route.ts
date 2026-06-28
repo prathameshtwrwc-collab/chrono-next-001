@@ -1,0 +1,1 @@
+﻿export async function POST(request: Request) { const { htmlTemplate } = await import("@/lib/pdf-template"); const data = await request.json(); return new Response(htmlTemplate(data), { headers: { "Content-Type": "text/html" } }); }

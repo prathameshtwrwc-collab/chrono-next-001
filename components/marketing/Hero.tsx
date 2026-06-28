@@ -6,7 +6,7 @@ import { CircadianOrbit } from "@/components/CircadianOrbit";
 
 function Line({ children, delay }: { children: React.ReactNode; delay: number }) {
   return (
-    <span className="block overflow-hidden py-4">
+    <span className="block overflow-hidden pt-2 pb-7">
       <motion.span
         initial={{ y: "110%" }}
         animate={{ y: 0 }}
@@ -79,7 +79,7 @@ export function Hero({ onStartAssessment }: { onStartAssessment?: () => void }) 
         >
           Sleep Intelligence · Human Performance
         </motion.p>
-        <h1 className="font-serif text-[clamp(2.75rem,7.5vw,7rem)] font-medium leading-[1.1] pb-4 text-ivory drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
+        <h1 className="font-serif text-[clamp(2.75rem,7.5vw,7rem)] font-medium leading-[1.15] pb-4 text-ivory drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
           <Line delay={0.4}>Understand</Line>
           <Line delay={0.55}>
             Your <span className="gold-text italic">Natural Sleep</span>

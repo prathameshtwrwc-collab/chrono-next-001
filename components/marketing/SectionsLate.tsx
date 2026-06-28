@@ -19,7 +19,7 @@ export function Corporate() {
           <div className="lg:col-span-6">
             <Reveal><Eyebrow dark>Corporate Wellbeing</Eyebrow></Reveal>
             <Reveal delay={0.1}>
-              <h2 className="font-serif text-[clamp(2.4rem,5vw,5rem)] font-medium leading-[1]">
+              <h2 className="font-serif text-[clamp(2.4rem,5vw,5rem)] font-medium leading-[1.08]">
                 Better teams start with <span className="italic text-royal">better sleep.</span>
               </h2>
             </Reveal>
@@ -79,7 +79,7 @@ export function Authority() {
         <div className="max-w-3xl">
           <Reveal><Eyebrow>Authority & Leadership</Eyebrow></Reveal>
           <Reveal delay={0.1}>
-            <h2 className="font-serif text-[clamp(2.5rem,5.5vw,5.5rem)] font-medium leading-[1]">
+            <h2 className="font-serif text-[clamp(2.5rem,5.5vw,5.5rem)] font-medium leading-[1.08]">
               Decades of <span className="gold-text italic">healthcare leadership.</span>
             </h2>
           </Reveal>
@@ -127,7 +127,7 @@ export function GlobalImpact() {
       <div className="relative z-10 mx-auto max-w-4xl text-center">
         <Reveal><p className="mb-8 text-[11px] font-semibold uppercase tracking-[0.5em] text-gold">Global Impact</p></Reveal>
         <Reveal delay={0.1}>
-          <h2 className="font-serif text-[clamp(3rem,8vw,7rem)] font-medium leading-[0.95]">
+          <h2 className="font-serif text-[clamp(3rem,8vw,7rem)] font-medium leading-[1.08]">
             <span className="block text-midnight/80">Better Sleep.</span>
             <span className="block text-ivory">Better Humans.</span>
             <span className="gold-text block italic">Better Future.</span>

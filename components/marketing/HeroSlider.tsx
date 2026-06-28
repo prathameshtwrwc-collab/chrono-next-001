@@ -67,7 +67,7 @@ export function HeroSlider() {
           <Eyebrow className="justify-center">The Science</Eyebrow>
         </Reveal>
         <Reveal delay={0.1}>
-          <h2 className="mx-auto mb-16 max-w-4xl text-center font-serif text-[clamp(2.3rem,5vw,4.5rem)] font-medium leading-[1]">
+          <h2 className="mx-auto mb-16 max-w-4xl text-center font-serif text-[clamp(2.3rem,5vw,4.5rem)] font-medium leading-[1.08]">
             Where biology meets{" "}
             <span className="italic text-royal">potential.</span>
           </h2>
