@@ -3,6 +3,7 @@
 import { useState, type ReactNode } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { LogOut, Home } from "lucide-react";
 import { motion } from "framer-motion";
 import { Wordmark } from "./ui";
 import { cn } from "@/lib/utils";
@@ -83,15 +84,17 @@ export function PortalLayout({
           <p className="mb-2 px-2 text-[10px] uppercase tracking-widest text-ivory/30">Session</p>
           <div className="grid gap-2 px-1">
             {clerkReady ? (
-              <button onClick={logout} className="rounded-lg border border-ivory/10 px-3 py-2 text-left text-xs text-ivory/60 transition-colors hover:border-gold hover:text-gold">
+              <button onClick={logout} className="flex items-center gap-2 rounded-lg border border-ivory/10 px-3 py-2 text-xs text-ivory/60 transition-colors hover:border-gold hover:text-gold">
+                <LogOut size={14} />
                 Log out
               </button>
             ) : (
-              <Link href="/sign-in" className="rounded-lg border border-ivory/10 px-3 py-2 text-xs text-ivory/60 transition-colors hover:border-gold hover:text-gold">
+              <Link href="/sign-in" className="flex items-center gap-2 rounded-lg border border-ivory/10 px-3 py-2 text-xs text-ivory/60 transition-colors hover:border-gold hover:text-gold">
                 Sign in
               </Link>
             )}
-            <Link href="/" className="rounded-lg border border-ivory/10 px-3 py-2 text-xs text-ivory/60 transition-colors hover:border-gold hover:text-gold">
+            <Link href="/" className="flex items-center gap-2 rounded-lg border border-ivory/10 px-3 py-2 text-xs text-ivory/60 transition-colors hover:border-gold hover:text-gold">
+              <Home size={14} />
               Home
             </Link>
           </div>
