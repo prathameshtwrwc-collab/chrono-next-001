@@ -1,0 +1,23 @@
+"use client";
+
+import { useState } from "react";
+import { Copy } from "lucide-react";
+
+export function CopyButton({ link }: { link: string }) {
+  const [copied, setCopied] = useState(false);
+
+  const copy = async () => {
+    const fullUrl = window.location.origin + link;
+    await navigator.clipboard.writeText(fullUrl);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <button onClick={copy}
+      className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-champagne via-gold to-sunrise px-5 py-2.5 text-sm font-semibold text-midnight shadow-[0_8px_30px_rgba(244,181,77,0.25)] transition-transform hover:scale-[1.02]">
+      <Copy size={16} />
+      {copied ? "Copied!" : "Copy Link"}
+    </button>
+  );
+}

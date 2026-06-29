@@ -1,9 +1,10 @@
 import { PageHeader, Card } from "@/components/PortalLayout";
+import { CopyButton } from "./CopyButton";
 import { getAdminScope } from "@/lib/data/dashboard";
 
 export default async function ShareLinkPage() {
   const scope = await getAdminScope();
-  const link = scope.uniqueCode ? `http://localhost:3000/${scope.uniqueCode}` : "No link assigned";
+  const link = scope.uniqueCode ? `/${scope.uniqueCode}` : null;
 
   return (
     <>
@@ -11,8 +12,20 @@ export default async function ShareLinkPage() {
       <div className="grid gap-6 lg:grid-cols-3">
         <Card className="lg:col-span-2">
           <p className="text-xs uppercase tracking-widest text-ivory/40">Shareable URL</p>
-          <p className="mt-4 break-all font-mono text-2xl text-gold">{link}</p>
-          <p className="mt-4 text-sm text-ivory/55">Status: {scope.linkActive ? "Active - members can be mapped" : "Paused - mapping is disabled"}</p>
+          <p className="mt-4 break-all font-mono text-2xl text-gold">{link ?? "No link assigned"}</p>
+          <div className="mt-4 flex items-center gap-3">
+            <span className={`rounded-full px-3 py-1 text-xs ${scope.linkActive ? "bg-emerald-400/15 text-emerald-300" : "bg-amber-400/15 text-amber-300"}`}>
+              {scope.linkActive ? "Active" : "Paused"}
+            </span>
+            <span className="text-xs text-ivory/45">
+              {scope.linkActive ? "Members can be mapped" : "Mapping is disabled"}
+            </span>
+          </div>
+          {link && (
+            <div className="mt-5">
+              <CopyButton link={link} />
+            </div>
+          )}
         </Card>
         <Card>
           <p className="font-serif text-2xl">QR / campaign ready</p>
