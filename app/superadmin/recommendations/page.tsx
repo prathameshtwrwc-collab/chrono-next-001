@@ -5,7 +5,7 @@ import { AddRecommendationForm } from "@/components/AddRecommendationForm";
 import { DeleteButton } from "./DeleteButton";
 import { cache } from "react";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 const getRecs = cache(async () => {
   const supabase = createSupabaseAdmin();

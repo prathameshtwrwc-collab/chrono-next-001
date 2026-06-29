@@ -6,6 +6,7 @@ import { getMemberDashboardData } from "@/lib/data/dashboard";
 import { useRouter } from "next/navigation";
 import { createPortal } from "react-dom";
 import { Link2, ExternalLink, MessageCircle, Send, Gamepad2, Mail } from "lucide-react";
+import { downloadPdf, openPdfForPrint } from "@/lib/client-pdf";
 
 export default function ProgressPage() {
   const [data, setData] = useState<any>(null);
@@ -28,7 +29,7 @@ export default function ProgressPage() {
       const snap = report.report_snapshot || {};
       const firstName = snap.firstName || snap.details?.firstName || "";
       const lastName = snap.lastName || snap.details?.lastName || "";
-      const payload = {
+      await downloadPdf({
         firstName,
         lastName,
         chronotype: snap.result?.chronotype || "EAGLE",
@@ -40,20 +41,7 @@ export default function ProgressPage() {
         recommendations: snap.recommendations || [],
         orgName: snap.orgName || "WelcomeCure",
         logoUrl: snap.logoUrl || null,
-      };
-      const resp = await fetch("/api/reports/generate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
       });
-      if (!resp.ok) throw new Error("fail");
-      const blob = await resp.blob();
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `chronotype-report-${report.snapshot?.firstName || "member"}.pdf`;
-      a.click();
-      URL.revokeObjectURL(url);
     } catch {}
     setDownloading(null);
   };
@@ -62,7 +50,7 @@ export default function ProgressPage() {
     setDownloading(report.id);
     try {
       const snap = report.report_snapshot || {};
-      const payload = {
+      await openPdfForPrint({
         firstName: snap.firstName || snap.details?.firstName || "",
         lastName: snap.lastName || snap.details?.lastName || "",
         chronotype: snap.result?.chronotype || "EAGLE",
@@ -74,16 +62,7 @@ export default function ProgressPage() {
         recommendations: snap.recommendations || [],
         orgName: snap.orgName || "WelcomeCure",
         logoUrl: snap.logoUrl || null,
-      };
-      const resp = await fetch("/api/reports/generate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
       });
-      if (!resp.ok) throw new Error("fail");
-      const blob = await resp.blob();
-      const url = URL.createObjectURL(blob);
-      window.open(url, "_blank");
     } catch {}
     setDownloading(null);
   };

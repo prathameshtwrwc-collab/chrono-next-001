@@ -1,7 +1,7 @@
 import { PageHeader, Card } from "@/components/PortalLayout";
 import { getMemberDashboardData } from "@/lib/data/dashboard";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export default async function RecommendationsPage() {
   const data = await getMemberDashboardData();

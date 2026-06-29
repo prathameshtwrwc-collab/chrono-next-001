@@ -41,7 +41,7 @@ export function ImageShowcase() {
           <Eyebrow dark className="justify-center">Visual Insights</Eyebrow>
         </Reveal>
         <Reveal delay={0.1}>
-          <h2 className="mx-auto mb-14 max-w-3xl text-center font-serif text-[clamp(2.2rem,4.5vw,4rem)] font-medium leading-[1]">
+          <h2 className="mx-auto mb-14 max-w-3xl text-center font-serif text-[clamp(2.2rem,4.5vw,4rem)] font-medium leading-[1.08]">
             Science made <span className="italic text-royal">visible.</span>
           </h2>
         </Reveal>

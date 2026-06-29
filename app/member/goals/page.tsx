@@ -2,7 +2,7 @@ import { PageHeader, Card } from "@/components/PortalLayout";
 import { AddGoalForm } from "@/components/AddGoalForm";
 import { getMemberGoalsData } from "@/lib/data/dashboard";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export default async function GoalsPage() {
   const goals = await getMemberGoalsData();

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { CircleX, Copy, Download, ExternalLink, MessageCircle, Printer, Share2, UserPlus } from "lucide-react";
 import { submitAssessment } from "@/app/actions/assessment";
 import { assessmentQuestions, scoreAssessment, type ChronotypeResult } from "@/lib/assessment";
+import { downloadPdf, openPdfForPrint } from "@/lib/client-pdf";
 
 type Details = {
   firstName: string;
@@ -174,33 +175,22 @@ export function AssessmentModal({ onClose }: { onClose: () => void }) {
   };
 
   const downloadReport = async () => {
-    if (!result || !assessmentId) return;
+    if (!result) return;
+    setMessage("Generating PDF...");
     try {
-      const resp = await fetch("/api/reports/generate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          firstName: details.firstName,
-          lastName: details.lastName,
-          chronotype: result.chronotype,
-          totalScore: result.totalScore,
-          larkScore: result.larkScore,
-          eagleScore: result.eagleScore,
-          owlScore: result.owlScore,
-          summary: result.summary,
-          recommendations: [],
-          orgName: details.organizationCode || "WelcomeCure",
-          logoUrl: null,
-        }),
+      await downloadPdf({
+        firstName: details.firstName,
+        lastName: details.lastName,
+        chronotype: result.chronotype,
+        totalScore: result.totalScore,
+        larkScore: result.larkScore,
+        eagleScore: result.eagleScore,
+        owlScore: result.owlScore,
+        summary: result.summary,
+        recommendations: [],
+        orgName: details.organizationCode || "WelcomeCure",
       });
-      if (!resp.ok) throw new Error("PDF generation failed");
-      const blob = await resp.blob();
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `chronotype-report-${details.firstName || "member"}.pdf`;
-      a.click();
-      URL.revokeObjectURL(url);
+      setMessage("");
     } catch {
       setMessage("Could not generate PDF. Please try again.");
     }
@@ -475,11 +465,10 @@ export function AssessmentModal({ onClose }: { onClose: () => void }) {
                       Download
                     </button>
                     <button onClick={async () => {
-                      if (!result || !assessmentId) return;
-                      const resp = await fetch("/api/reports/generate", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({
+                      if (!result) return;
+                      setMessage("Preparing PDF for print...");
+                      try {
+                        await openPdfForPrint({
                           firstName: details.firstName,
                           lastName: details.lastName,
                           chronotype: result.chronotype,
@@ -490,10 +479,11 @@ export function AssessmentModal({ onClose }: { onClose: () => void }) {
                           summary: result.summary,
                           recommendations: [],
                           orgName: details.organizationCode || "WelcomeCure",
-                          logoUrl: null,
-                        }),
-                      });
-                      if (resp.ok) { const blob = await resp.blob(); const url = URL.createObjectURL(blob); window.open(url, "_blank"); }
+                        });
+                        setMessage("");
+                      } catch {
+                        setMessage("Could not prepare PDF for print.");
+                      }
                     }} className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-white/72 hover:bg-white/10">
                       <Printer className="h-4 w-4" />
                       Print

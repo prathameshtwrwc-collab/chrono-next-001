@@ -2,7 +2,7 @@ import { PageHeader, Card } from "@/components/PortalLayout";
 import { MiniLine, Bars } from "@/components/charts";
 import { getOrganizationDashboardData } from "@/lib/data/dashboard";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export default async function AnalyticsPage() {
   const data = await getOrganizationDashboardData();

@@ -4,7 +4,7 @@ import { createSupabaseAdmin } from "@/utils/supabase/admin";
 import { redirect } from "next/navigation";
 import { cache } from "react";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 const getAdminOrg = cache(async () => {
   const { userId } = await auth();

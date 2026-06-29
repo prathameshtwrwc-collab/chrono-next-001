@@ -2,7 +2,7 @@ import { PageHeader, Card, Stat } from "@/components/PortalLayout";
 import { Bars, MiniLine, Ring } from "@/components/charts";
 import { getPlatformDashboardData } from "@/lib/data/dashboard";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export default async function ReportsPage() {
   const data = await getPlatformDashboardData();

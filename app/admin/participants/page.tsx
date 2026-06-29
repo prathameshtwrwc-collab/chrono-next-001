@@ -2,7 +2,7 @@ import { PageHeader, Card } from "@/components/PortalLayout";
 import { GoldButton } from "@/components/ui";
 import { getOrganizationDashboardData } from "@/lib/data/dashboard";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export default async function ParticipantsPage() {
   const data = await getOrganizationDashboardData();

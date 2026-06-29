@@ -21,13 +21,15 @@ export function CircadianOrbit({
   return (
     <div className={cn("relative aspect-square", className)}>
       <div
-        className="animate-pulse-glow absolute left-1/2 top-1/2 h-[42%] w-[42%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(244,181,77,0.55), rgba(231,169,91,0.15) 45%, transparent 70%)",
-          opacity: intensity,
-        }}
-      />
+          className="animate-pulse-glow absolute left-1/2 top-1/2 h-[42%] w-[42%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(244,181,77,0.4), rgba(231,169,91,0.1) 45%, transparent 70%)",
+            opacity: intensity * 0.7,
+            willChange: "transform",
+            transform: "translate3d(-50%, -50%, 0)",
+          }}
+        />
 
       <svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full">
         <defs>
@@ -60,13 +62,13 @@ export function CircadianOrbit({
         <circle cx="200" cy="200" r="14" fill="#fff8ec" opacity="0.95" />
       </svg>
 
-      <div className="animate-orbit-slow absolute inset-0">
+      <div className="animate-orbit-slow absolute inset-0" style={{ willChange: "transform" }}>
         <Ring radius={47.5} nodes={nodes.slice(0, 3)} />
       </div>
-      <div className="animate-orbit-rev absolute inset-0">
+      <div className="animate-orbit-rev absolute inset-0" style={{ willChange: "transform" }}>
         <Ring radius={38.5} nodes={nodes.slice(3, 6)} />
       </div>
-      <div className="animate-orbit absolute inset-0">
+      <div className="animate-orbit absolute inset-0" style={{ willChange: "transform" }}>
         <Ring radius={30} nodes={[{ a: 30, c: "#f5d18c" }, { a: 210, c: "#f4b54d" }]} />
       </div>
 
@@ -107,7 +109,7 @@ function Ring({
               left: `${x}%`,
               top: `${y}%`,
               background: n.c,
-              boxShadow: `0 0 14px ${n.c}, 0 0 28px ${n.c}88`,
+              boxShadow: `0 0 10px ${n.c}`,
             }}
           />
         );

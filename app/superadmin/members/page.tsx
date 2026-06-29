@@ -2,7 +2,7 @@ import { PageHeader, Card } from "@/components/PortalLayout";
 import { Pagination } from "@/components/Pagination";
 import { getAllMembers } from "@/lib/data/dashboard";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export default async function MembersPage({ searchParams }: { searchParams: Promise<Record<string, string>> }) {
   const params = await searchParams;

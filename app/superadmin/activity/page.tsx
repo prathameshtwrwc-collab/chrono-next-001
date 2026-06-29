@@ -2,7 +2,7 @@ import { PageHeader, Card } from "@/components/PortalLayout";
 import { Pagination } from "@/components/Pagination";
 import { getActivityLogs } from "@/lib/data/dashboard";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export default async function ActivityPage({ searchParams }: { searchParams: Promise<Record<string, string>> }) {
   const params = await searchParams;

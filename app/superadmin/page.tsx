@@ -3,7 +3,7 @@ import { MiniLine } from "@/components/charts";
 import { GoldButton } from "@/components/ui";
 import { getPlatformDashboardData } from "@/lib/data/dashboard";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export default async function CommandCenter() {
   const data = await getPlatformDashboardData();

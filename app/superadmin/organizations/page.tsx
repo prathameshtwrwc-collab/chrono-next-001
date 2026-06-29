@@ -4,7 +4,7 @@ import { Pagination } from "@/components/Pagination";
 import { AddOrganizationForm, LinkToggle } from "@/components/AddOrganizationForm";
 import { getPlatformDashboardData } from "@/lib/data/dashboard";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export default async function OrgsPage({ searchParams }: { searchParams: Promise<Record<string, string>> }) {
   const params = await searchParams;

@@ -2,7 +2,7 @@ import { PageHeader, Card } from "@/components/PortalLayout";
 import { Pagination } from "@/components/Pagination";
 import { getAllReferrals } from "@/lib/data/dashboard";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export default async function ReferralsPage({ searchParams }: { searchParams: Promise<Record<string, string>> }) {
   const params = await searchParams;

@@ -1,7 +1,7 @@
 import { PageHeader, Card, Stat } from "@/components/PortalLayout";
 import { MiniLine, Ring } from "@/components/charts";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 import { GoldButton } from "@/components/ui";
 import { getMemberDashboardData } from "@/lib/data/dashboard";
 

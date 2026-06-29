@@ -5,7 +5,7 @@ import { getAssessmentVersions, getScoringRules } from "@/lib/data/dashboard";
 import { ViewAssessmentButton } from "./ViewAssessmentButton";
 import { ActivateButton } from "./ActivateButton";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export default async function AssessmentsPage({ searchParams }: { searchParams: Promise<Record<string, string>> }) {
   const params = await searchParams;

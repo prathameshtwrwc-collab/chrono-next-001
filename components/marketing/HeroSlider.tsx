@@ -42,20 +42,26 @@ const slides = [
 export function HeroSlider() {
   const [index, setIndex] = useState(0);
   const [progress, setProgress] = useState(0);
+  const indexRef = useRef(0);
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ offset: ["start end", "end start"] });
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.05, 1, 0.95]);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setProgress((p) => p + 0.5);
-      if (progress >= 100) {
-        setIndex((i) => (i + 1) % slides.length);
-        setProgress(0);
-      }
+      setProgress((prev) => {
+        const next = prev + 0.5;
+        if (next >= 100) {
+          const nextIdx = (indexRef.current + 1) % slides.length;
+          indexRef.current = nextIdx;
+          setIndex(nextIdx);
+          return 0;
+        }
+        return next;
+      });
     }, 50);
     return () => clearInterval(timer);
-  }, [progress]);
+  }, []);
 
   const next = () => setIndex((i) => (i + 1) % slides.length);
   const prev = () => setIndex((i) => (i - 1 + slides.length) % slides.length);
@@ -67,7 +73,7 @@ export function HeroSlider() {
           <Eyebrow className="justify-center">The Science</Eyebrow>
         </Reveal>
         <Reveal delay={0.1}>
-          <h2 className="mx-auto mb-16 max-w-4xl text-center font-serif text-[clamp(2.3rem,5vw,4.5rem)] font-medium leading-[1]">
+          <h2 className="mx-auto mb-16 max-w-4xl text-center font-serif text-[clamp(2.3rem,5vw,4.5rem)] font-medium leading-[1.08]">
             Where biology meets{" "}
             <span className="italic text-royal">potential.</span>
           </h2>

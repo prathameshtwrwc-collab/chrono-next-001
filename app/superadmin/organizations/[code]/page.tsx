@@ -4,7 +4,7 @@ import { PageHeader, Card, Stat } from "@/components/PortalLayout";
 import { getOrganizationDetail } from "@/lib/data/dashboard";
 import { DetailModal, ChronotypeModal } from "../OrgModals";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export default async function OrgDetailPage({ params }: { params: Promise<{ code: string }> }) {
   const { code } = await params;

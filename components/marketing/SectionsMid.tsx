@@ -22,7 +22,7 @@ export function DailyRhythm() {
         <div className="text-center">
           <Reveal><Eyebrow dark className="justify-center">Daily Rhythm Optimization</Eyebrow></Reveal>
           <Reveal delay={0.1}>
-            <h2 className="mx-auto max-w-3xl font-serif text-[clamp(2.4rem,5vw,5rem)] font-medium leading-[1]">
+            <h2 className="mx-auto max-w-3xl font-serif text-[clamp(2.4rem,5vw,5rem)] font-medium leading-[1.08]">
               Optimize your day around <span className="italic text-royal">your biology.</span>
             </h2>
           </Reveal>
@@ -90,7 +90,7 @@ export function SleepBlueprint() {
           <div className="lg:col-span-5">
             <Reveal><Eyebrow dark>Sleep Blueprint</Eyebrow></Reveal>
             <Reveal delay={0.1}>
-              <h2 className="font-serif text-[clamp(2.4rem,5vw,4.8rem)] font-medium leading-[1]">
+              <h2 className="font-serif text-[clamp(2.4rem,5vw,4.8rem)] font-medium leading-[1.08]">
                 Discover your <span className="italic text-royal">sleep blueprint.</span>
               </h2>
             </Reveal>
@@ -153,7 +153,7 @@ export function Transformation() {
         <div className="max-w-3xl">
           <Reveal><Eyebrow>Transformation</Eyebrow></Reveal>
           <Reveal delay={0.1}>
-            <h2 className="font-serif text-[clamp(2.5rem,5.5vw,5.5rem)] font-medium leading-[1]">
+            <h2 className="font-serif text-[clamp(2.5rem,5.5vw,5.5rem)] font-medium leading-[1.08]">
               Aligned rhythm.<br /><span className="gold-text italic">Better life.</span>
             </h2>
           </Reveal>
@@ -188,7 +188,7 @@ export function DidYouKnow() {
       <div className="mx-auto max-w-7xl">
         <Reveal><Eyebrow dark>Did You Know?</Eyebrow></Reveal>
         <Reveal delay={0.1}>
-          <h2 className="max-w-3xl font-serif text-[clamp(2.4rem,5vw,5rem)] font-medium leading-[1]">
+          <h2 className="max-w-3xl font-serif text-[clamp(2.4rem,5vw,5rem)] font-medium leading-[1.08]">
             Knowledge worth <span className="italic text-royal">sharing.</span>
           </h2>
         </Reveal>
@@ -224,7 +224,7 @@ export function MythVsFact() {
         <div className="text-center">
           <Reveal><Eyebrow className="justify-center">Myth vs Fact</Eyebrow></Reveal>
           <Reveal delay={0.1}>
-            <h2 className="font-serif text-[clamp(2.4rem,5vw,5rem)] font-medium leading-[1]">
+            <h2 className="font-serif text-[clamp(2.4rem,5vw,5rem)] font-medium leading-[1.08]">
               Separate the <span className="gold-text italic">science</span> from the noise.
             </h2>
           </Reveal>

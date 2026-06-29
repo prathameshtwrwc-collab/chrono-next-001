@@ -2,7 +2,7 @@ import { PageHeader, Card } from "@/components/PortalLayout";
 import { CircadianOrbit } from "@/components/CircadianOrbit";
 import { getMemberDashboardData } from "@/lib/data/dashboard";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export default async function ChronotypePage() {
   const data = await getMemberDashboardData();

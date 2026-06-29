@@ -21,7 +21,7 @@ export function WhySleepMatters() {
               <Eyebrow dark>Why Sleep Matters</Eyebrow>
             </Reveal>
             <Reveal delay={0.1}>
-              <h2 className="font-serif text-[clamp(2.5rem,5.5vw,5rem)] font-medium leading-[0.98]">
+              <h2 className="font-serif text-[clamp(2.5rem,5.5vw,5rem)] font-medium leading-[1.08]">
                 The foundation of
                 <br />
                 <span className="italic text-royal">human performance.</span>

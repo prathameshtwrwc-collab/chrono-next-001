@@ -6,7 +6,7 @@ import { CircadianOrbit } from "@/components/CircadianOrbit";
 
 function Line({ children, delay }: { children: React.ReactNode; delay: number }) {
   return (
-    <span className="block overflow-hidden py-4">
+    <span className="block overflow-hidden pt-2 pb-7">
       <motion.span
         initial={{ y: "110%" }}
         animate={{ y: 0 }}
@@ -44,17 +44,17 @@ export function Hero({ onStartAssessment }: { onStartAssessment?: () => void }) 
             "radial-gradient(ellipse 80% 60% at 50% 38%, rgba(53,74,130,0.45), transparent 60%), radial-gradient(circle at 50% 30%, rgba(244,181,77,0.18), transparent 55%)",
         }}
       />
-      <div className="absolute inset-0 opacity-50">
-        {Array.from({ length: 50 }).map((_, i) => (
+      <div className="absolute inset-0 opacity-40">
+        {Array.from({ length: 25 }).map((_, i) => (
           <span
             key={i}
             className="absolute rounded-full bg-ivory"
             style={{
-              left: `${(i * 37) % 100}%`,
-              top: `${(i * 53) % 100}%`,
-              width: i % 5 === 0 ? 2.5 : 1.3,
-              height: i % 5 === 0 ? 2.5 : 1.3,
-              opacity: 0.2 + ((i * 13) % 60) / 100,
+              left: `${(i * 73) % 100}%`,
+              top: `${(i * 47) % 100}%`,
+              width: i % 4 === 0 ? 2 : 1.2,
+              height: i % 4 === 0 ? 2 : 1.2,
+              opacity: 0.15 + ((i * 17) % 50) / 100,
             }}
           />
         ))}
@@ -79,7 +79,7 @@ export function Hero({ onStartAssessment }: { onStartAssessment?: () => void }) 
         >
           Sleep Intelligence · Human Performance
         </motion.p>
-        <h1 className="font-serif text-[clamp(2.75rem,7.5vw,7rem)] font-medium leading-[1.1] pb-4 text-ivory drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
+        <h1 className="font-serif text-[clamp(2.75rem,7.5vw,7rem)] font-medium leading-[1.15] pb-4 text-ivory drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
           <Line delay={0.4}>Understand</Line>
           <Line delay={0.55}>
             Your <span className="gold-text italic">Natural Sleep</span>

@@ -4,7 +4,7 @@ import { AddAdminForm } from "@/components/AddAdminForm";
 import { AdminDetailModal } from "@/components/AdminDetailModal";
 import { getOrganizationAdmins } from "@/lib/data/dashboard";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export default async function UsersPage({ searchParams }: { searchParams: Promise<Record<string, string>> }) {
   const params = await searchParams;
