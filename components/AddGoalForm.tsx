@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { createMemberGoalAction } from "@/app/actions/extras";
 
 export function AddGoalForm() {
@@ -26,7 +27,7 @@ export function AddGoalForm() {
       <button onClick={() => setOpen(true)} className="rounded-full bg-gradient-to-r from-champagne via-gold to-sunrise px-6 py-3 text-sm font-semibold text-midnight shadow-[0_8px_30px_rgba(244,181,77,0.25)]">
         Add Goal
       </button>
-      {open && (
+      {open && typeof window === "object" && createPortal(
         <div className="fixed inset-0 z-50 flex items-start justify-center bg-midnight/80 p-4 backdrop-blur-xl overflow-y-auto" onClick={() => setOpen(false)}>
           <div className="w-full max-w-lg my-8 rounded-2xl border border-white/10 bg-indigo-deep p-6 text-ivory shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-start justify-between gap-4 mb-6">
@@ -56,7 +57,7 @@ export function AddGoalForm() {
               {saving ? "Saving..." : "Create Goal"}
             </button>
           </div>
-        </div>
+        </div>, document.body
       )}
     </>
   );

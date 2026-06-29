@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { createPortal } from "react-dom";
 import { createOrganizationAction, setOrganizationLinkActiveAction } from "@/app/actions/organizations";
 
 export function AddOrganizationForm() {
@@ -41,9 +42,9 @@ export function AddOrganizationForm() {
       </button>
       {message && <p className="mt-3 text-sm text-gold">{message}</p>}
 
-      {open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-midnight/80 p-4 backdrop-blur-xl">
-          <form action={submit} className="max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-2xl border border-white/10 bg-indigo-deep p-6 text-ivory shadow-2xl">
+      {open && typeof window === "object" && createPortal(
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-midnight/80 p-4 backdrop-blur-xl" onClick={() => setOpen(false)}>
+          <form action={submit} className="max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-2xl border border-white/10 bg-indigo-deep p-6 text-ivory shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-gold">Super Admin</p>
@@ -86,7 +87,7 @@ export function AddOrganizationForm() {
               </button>
             </div>
           </form>
-        </div>
+        </div>, document.body
       )}
     </>
   );

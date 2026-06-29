@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useTransition } from "react";
+import { createPortal } from "react-dom";
 import { addAdminToOrganizationAction } from "@/app/actions/organizations";
 
 export function AddAdminForm() {
@@ -30,9 +31,9 @@ export function AddAdminForm() {
       <button onClick={() => setOpen(true)} className="rounded-full bg-gradient-to-r from-champagne via-gold to-sunrise px-6 py-3 text-sm font-semibold text-midnight shadow-[0_8px_30px_rgba(244,181,77,0.25)]">
         Add Admin
       </button>
-      {open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-midnight/80 p-4 backdrop-blur-xl">
-          <form action={submit} className="w-full max-w-lg rounded-2xl border border-white/10 bg-indigo-deep p-6 text-ivory shadow-2xl">
+      {open && typeof window === "object" && createPortal(
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-midnight/80 p-4 backdrop-blur-xl" onClick={() => setOpen(false)}>
+          <form action={submit} className="w-full max-w-lg rounded-2xl border border-white/10 bg-indigo-deep p-6 text-ivory shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.35em] text-gold">Super Admin</p>
@@ -80,7 +81,7 @@ export function AddAdminForm() {
               </button>
             </div>
           </form>
-        </div>
+        </div>, document.body
       )}
     </>
   );
